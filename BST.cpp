@@ -11,15 +11,24 @@ typedef struct node
 }Tree;
 
 
-//void display_tree(node* root)
-//{
-//	if (root->left != nullptr)
-//		display_tree(root->left);
-//	if (root->right != nullptr)
-//		display_tree(root->right);
-//	cout << root->data << endl;
-//	
-//}
+void disp_tree_leaf_only(node* root)
+{
+	if (root == nullptr)
+	{
+		cout << "empty tree" << endl;
+		return;
+	}
+
+	if (root->left == nullptr && root->right == nullptr)
+	{
+		cout << root->data << endl;
+		return;
+	}
+	disp_tree_leaf_only(root->left);
+	disp_tree_leaf_only(root->right);
+
+
+}
 
 
 node* insert_tree(node* root, uint16_t data)
@@ -58,5 +67,6 @@ int main()
 	root = insert_tree(root, 7);
 	root = insert_tree(root, 11);
 
-	display_tree(root);
+	cout << "Display Leafs Only: " << endl;
+	disp_tree_leaf_only(root);
 }
