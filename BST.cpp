@@ -24,9 +24,33 @@ void disp_tree_leaf_only(node* root)
 		cout << root->data << endl;
 		return;
 	}
-	disp_tree_leaf_only(root->left);
-	disp_tree_leaf_only(root->right);
 
+	if(root->left != nullptr)
+		disp_tree_leaf_only(root->left);
+	if(root->right != nullptr)
+		disp_tree_leaf_only(root->right);
+}
+
+void disp_left_to_right(node* root)
+{
+	if (root == nullptr)
+	{
+		cout << "Nothing to display" << endl;
+		return;
+	}
+
+	if (root->left == nullptr)
+	{
+		cout << root->data << endl;
+		return;
+	}
+
+	disp_left_to_right(root->left);
+
+	cout << root->data << endl;
+
+	if (root->right != nullptr)
+		disp_left_to_right(root->right);
 
 }
 
@@ -69,4 +93,8 @@ int main()
 
 	cout << "Display Leafs Only: " << endl;
 	disp_tree_leaf_only(root);
+
+	cout << "Display Tree Left to Right" << endl;
+	disp_left_to_right(root);
+
 }
