@@ -39,12 +39,6 @@ void disp_left_to_right_sorted(node* root)
 		return;
 	}
 
-	if (root->left == nullptr && root->right == nullptr)
-	{
-		cout << root->data << endl;
-		return;
-	}
-
 	if(root->left != nullptr)
 		disp_left_to_right_sorted(root->left);
 
